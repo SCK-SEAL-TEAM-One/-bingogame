@@ -11,7 +11,7 @@ func Test_NewPlayer_Input_A_Should_Be_Struct(t *testing.T) {
 
     actual := NewPlayer(playerName)
     
-    if expected != actual{
+    if expected.Name != actual.Name{
         t.Errorf("Should be %v but got %v",expected,actual)
     }
 
