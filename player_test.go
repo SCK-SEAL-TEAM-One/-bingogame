@@ -90,3 +90,27 @@ func Test_GetBingo_Input_X_1_Y_4_Should_Be_false(t *testing.T) {
 		t.Errorf("Should be %t but got %t", expectedResult, actualResult)
 	}
 }
+func Test_CheckVertical_Input_X_1_Y_4_Should_Be_False(t *testing.T) {
+	positionX := 1
+	positionY := 4
+	player := Player{
+		Name: "A",
+		Ticket: Ticket{
+			SizeX: 5,
+			SizeY: 5,
+			Grid: [][]State{
+				[]State{State{Number: 1}, State{Number: 17}, State{Number: 35}, State{Number: 51}, State{Number: 74}},
+				[]State{State{Number: 9}, State{Number: 21}, State{Number: 41}, State{Number: 38}, State{Number: 79}},
+				[]State{State{Number: 2}, State{Number: 23}, State{Number: 0, Status: true}, State{Number: 47}, State{Number: 68}},
+				[]State{State{Number: 14}, State{Number: 29}, State{Number: 32}, State{Number: 49}, State{Number: 66}},
+				[]State{State{Number: 11}, State{Number: 30}, State{Number: 39}, State{Number: 56}, State{Number: 70}},
+			},
+		},
+	}
+	expectedBingo := false
+
+	actualBingo := player.CheckVertical(positionX, positionY)
+	if expectedBingo != actualBingo {
+		t.Errorf("expected %v but got %v", expectedBingo, actualBingo)
+	}
+}

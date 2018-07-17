@@ -18,6 +18,29 @@ func (p Player) CheckNumber(number int) (int, int) {
 	return -1, -1
 }
 
-func (p Player) GetBingo(x, y int) bool {
-	return p.CheckHorizontal(x, y) || p.CheckDiagonal(x, y) || p.CheckVertical(x, y)
+func (p Player) GetBingo(positionX, positionY int) bool {
+	return p.CheckHorizontal(positionX, positionY) || p.CheckDiagonal(positionX, positionY) || p.CheckVertical(positionX, positionY)
+}
+
+func (p Player) CheckVertical(positionX, positionY int) bool {
+	var number int
+	for rowIndex := range p.Ticket.Grid[positionX] {
+
+		if p.Ticket.Grid[positionX][rowIndex].Status == true {
+			number++
+			if number == p.Ticket.SizeX {
+				return true
+			}
+		}
+
+	}
+	return false
+}
+
+func (p Player) CheckDiagonal(positionX, positionY int) bool {
+	return false
+}
+
+func (p Player) CheckHorizontal(positionX, positionY int) bool {
+	return false
 }
