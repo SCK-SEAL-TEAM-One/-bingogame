@@ -28,7 +28,7 @@ func Test_NewTicket_Input_Number_Of_Grid_5_Should_Be_Ticket_With_SizeX_And_SizeY
 	}
 }
 
-func MockTicketNumber(ticket Ticket, mockId int) {
+func MockTicketNumber(ticket Ticket, mockId int) Ticket {
 	switch mockId {
 	case 1:
 		ticketDataId := []int{
@@ -59,4 +59,5 @@ func MockTicketNumber(ticket Ticket, mockId int) {
 			}
 		}
 	}
+	return ticket
 }
