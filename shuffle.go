@@ -8,7 +8,7 @@ import (
 func Shuffle(startNumber, endNumber int) []int {
 	length := endNumber - startNumber + 1
 	shuffle := make([]int, length)
-	for index := 0; index < endNumber; index++ {
+	for index := 0; index < length; index++ {
 		shuffle[index] = index + 1
 	}
 	for index := len(shuffle) - 1; index > 0; index-- {
