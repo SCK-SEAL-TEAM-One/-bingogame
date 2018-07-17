@@ -11,3 +11,19 @@ func NewTicket(numberOfGrid int) Ticket {
 		Grid:  grid,
 	}
 }
+
+func GenerateTicketNumber(ticket Ticket) Ticket {
+	for indexRow := range ticket.Grid {
+		suffleNumber := Shuffle(1+(indexRow*15), 15+(indexRow*15))
+		for indexColumn := range ticket.Grid[indexRow] {
+			var value int
+			value, suffleNumber = suffleNumber[0], suffleNumber[1:]
+			ticket.Grid[indexRow][indexColumn].Number = value
+		}
+	}
+	return ticket
+}
+
+func (t Ticket) GetGridNumber(Row, Column int) int {
+	return t.Grid[Row][Column].Number
+}
