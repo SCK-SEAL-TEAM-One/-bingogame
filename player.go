@@ -7,6 +7,15 @@ func NewPlayer(name string, ticket Ticket) Player {
 	}
 }
 
+func (p *Player)Mark(x,y int) bool {
+	p.Ticket.Grid[x][y].Status = true
+
+	if p.Ticket.Grid[x][y].Status == false {
+		return false
+	}
+	return true
+}
+
 func (p Player) CheckNumber(number int) (int, int) {
 	for rowIndex := range p.Ticket.Grid {
 		for columnIndex := range p.Ticket.Grid[rowIndex] {
