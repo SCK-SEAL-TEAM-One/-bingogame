@@ -17,3 +17,7 @@ func (p Player) CheckNumber(number int) (int, int) {
 	}
 	return -1, -1
 }
+
+func (p Player) GetBingo(x, y int) bool {
+	return p.CheckHorizontal(x, y) || p.CheckDiagonal(x, y) || p.CheckVertical(x, y)
+}

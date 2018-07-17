@@ -78,3 +78,15 @@ func Test_CheckNumber_Input_9_Should_Be_2_1(t *testing.T) {
 	}
 
 }
+
+func Test_GetBingo_Input_X_1_Y_4_Should_Be_false(t *testing.T) {
+	newTicket := NewTicket(5)
+	newPlayer := NewPlayer("A", newTicket)
+	expectedResult := false
+
+	actualResult := newPlayer.GetBingo(1, 4)
+
+	if expectedResult != actualResult {
+		t.Errorf("Should be %t but got %t", expectedResult, actualResult)
+	}
+}
