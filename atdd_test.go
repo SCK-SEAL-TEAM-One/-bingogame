@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func Test_AcceptanceTest_Vertical_CenterBingoRule_Input_Player_A_And_B_PlayRound_Should_Be_Player_B_Bingo_With_Number_45_41_32_36(t *testing.T) {
+func Test_AcceptanceTest_Vertical_CenterBingoRule_Input_Player_A_And_B_PlayRound_8_Should_Be_Player_A_Bingo_With_Number_51_47_56_49_58(t *testing.T) {
 
 	ticketBlankPlayerA := NewTicket(5)
 	ticketBlankPlayerB := NewTicket(5)
@@ -14,6 +14,7 @@ func Test_AcceptanceTest_Vertical_CenterBingoRule_Input_Player_A_And_B_PlayRound
 	playerA := NewPlayer("A", ticketWithNumberA)
 	playerB := NewPlayer("B", ticketWithNumberB)
 	numberBox := NewNumberBox(75)
+	numberBox = MockNumberBox()
 	allPlayer := []Player{playerA, playerB}
 	game := NewGame(allPlayer, numberBox)
 
@@ -50,4 +51,8 @@ func Test_AcceptanceTest_Vertical_CenterBingoRule_Input_Player_A_And_B_PlayRound
 		t.Errorf("expected player is %s but it got %s", expectedBingoPlayer, actualBingoPlayer)
 	}
 
+}
+
+func MockNumberBox() []int {
+	return []int{9, 51, 47, 29, 56, 49, 39, 58}
 }

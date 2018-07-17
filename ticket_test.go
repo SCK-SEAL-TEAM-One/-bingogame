@@ -2,7 +2,6 @@ package bingogame_test
 
 import (
 	. "bingogame"
-	"fmt"
 	"testing"
 )
 
@@ -23,7 +22,6 @@ func Test_NewTicket_Input_Number_Of_Grid_5_Should_Be_Ticket_With_SizeX_And_SizeY
 			}
 		}
 	}
-
 	if actualTicket.SizeX != expected.SizeX || actualTicket.SizeY != expected.SizeY {
 		t.Errorf("expect %v but got %v", expected, actualTicket)
 	}
@@ -37,7 +35,7 @@ func Test_GenerateTicketNumber_Input_BlankTicket_Should_Be_TicketWithNumber(t *t
 	ticket := Ticket{SizeX: 5, SizeY: 5, Grid: grid}
 
 	ticket = GenerateTicketNumber(ticket)
-	fmt.Printf("!%v", ticket.Grid[0][0])
+
 	for indexRow := 0; indexRow < 5; indexRow++ {
 		for indexColumn := 0; indexColumn < 5; indexColumn++ {
 			if ticket.Grid[indexRow][indexColumn].Number == 0 && indexColumn != 2 && indexRow != 2 {
@@ -46,6 +44,7 @@ func Test_GenerateTicketNumber_Input_BlankTicket_Should_Be_TicketWithNumber(t *t
 		}
 	}
 }
+
 func MockTicketNumber(ticket Ticket, mockId int) Ticket {
 	switch mockId {
 	case 1:

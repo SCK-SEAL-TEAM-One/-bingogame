@@ -53,7 +53,7 @@ func Test_NewPlayer_Input_Name_B_With_Ticket_Should_Be_Player_Name_B_With_Ticket
 	}
 }
 
-func Test_Mark_Input_X_1_Y_4_Should_Be_True(t *testing.T){
+func Test_Mark_Input_X_1_Y_4_Should_Be_True(t *testing.T) {
 	x := 1
 	y := 4
 	ticket := Ticket{
@@ -72,10 +72,10 @@ func Test_Mark_Input_X_1_Y_4_Should_Be_True(t *testing.T){
 		Ticket: ticket,
 	}
 	expected := true
-	actual := player.Mark(x,y)
+	actual := player.Mark(x, y)
 
 	if expected != actual {
-		t.Errorf("expect %t but got %t",expected, actual)
+		t.Errorf("expect %t but got %t", expected, actual)
 	}
 }
 

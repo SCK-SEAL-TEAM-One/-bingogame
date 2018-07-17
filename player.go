@@ -7,10 +7,12 @@ func NewPlayer(name string, ticket Ticket) Player {
 	}
 }
 
-func (p *Player)Mark(x,y int) bool {
-	p.Ticket.Grid[x][y].Status = true
+func (p *Player) Mark(positionX, positionY int) bool {
+	positionX -= 1
+	positionY -= 1
+	p.Ticket.Grid[positionX][positionY].Status = true
 
-	if p.Ticket.Grid[x][y].Status == false {
+	if p.Ticket.Grid[positionX][positionY].Status == false {
 		return false
 	}
 	return true
@@ -34,14 +36,12 @@ func (p Player) GetBingo(positionX, positionY int) bool {
 func (p Player) CheckVertical(positionX, positionY int) bool {
 	var number int
 	for rowIndex := range p.Ticket.Grid[positionX] {
-
 		if p.Ticket.Grid[positionX][rowIndex].Status == true {
 			number++
 			if number == p.Ticket.SizeX {
 				return true
 			}
 		}
-
 	}
 	return false
 }

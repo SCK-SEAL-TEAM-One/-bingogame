@@ -1,7 +1,8 @@
 package bingogame
 
-func NewNumberBox(number int) []int {
-	return Shuffle(1, number)
+func NewNumberBox(endNumber int) []int {
+	startNumber := 1
+	return Shuffle(startNumber, endNumber)
 }
 
 func NewGame(players []Player, numberBox []int) Game {

@@ -14,7 +14,9 @@ func NewTicket(numberOfGrid int) Ticket {
 
 func GenerateTicketNumber(ticket Ticket) Ticket {
 	for indexRow := range ticket.Grid {
-		suffleNumber := Shuffle(1+(indexRow*15), 15+(indexRow*15))
+		startNumber := 1 + (indexRow * 15)
+		endNumber := 15 + (indexRow * 15)
+		suffleNumber := Shuffle(startNumber, endNumber)
 		for indexColumn := range ticket.Grid[indexRow] {
 			var value int
 			value, suffleNumber = suffleNumber[0], suffleNumber[1:]
