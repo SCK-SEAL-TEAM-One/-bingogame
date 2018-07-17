@@ -14,7 +14,7 @@ func Test_AcceptanceTest_Vertical_CenterBingoRule_Input_Player_A_And_B_PlayRound
     playerA := NewPlayer("A",ticketWithNumberA)
     playerB := NewPlayer("B",ticketWithNumberB)
     numberBox := NewNumberBox(75)
-    allPlayer := [2]Player{playerA,playerB}
+    allPlayer := []Player{playerA,playerB}
     game := NewGame(allPlayer,numberBox)
 
     bingoPlayer := ""

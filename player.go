@@ -6,3 +6,8 @@ func NewPlayer(name string, ticket Ticket) Player {
 		Ticket: ticket,
 	}
 }
+
+func (p *Player)Mark(x,y int) bool {
+	p.Ticket.Grid[x][y].Status = true
+	return true
+}
