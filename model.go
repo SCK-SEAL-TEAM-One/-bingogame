@@ -13,7 +13,7 @@ type State struct {
 
 type Player struct {
 	Name   string
-	Ticker Ticket
+	Ticket Ticket
 }
 
 type Game struct {
