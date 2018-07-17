@@ -40,7 +40,7 @@ func Test_GenerateTicketNumber_Input_BlankTicket_Should_Be_TicketWithNumber(t *t
 	fmt.Printf("!%v", ticket.Grid[0][0])
 	for indexRow := 0; indexRow < 5; indexRow++ {
 		for indexColumn := 0; indexColumn < 5; indexColumn++ {
-			if ticket.Grid[indexRow][indexColumn].Number == 0 && indexColumn != 2 && indexColumn != 2 {
+			if ticket.Grid[indexRow][indexColumn].Number == 0 && indexColumn != 2 && indexRow != 2 {
 				t.Errorf("GirdNumber Row %d Column %d is %d", indexRow, indexColumn, ticket.Grid[indexRow][indexColumn].Number)
 			}
 		}

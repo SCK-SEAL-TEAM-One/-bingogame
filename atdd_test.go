@@ -14,34 +14,33 @@ func Test_AcceptanceTest_Vertical_CenterBingoRule_Input_Player_A_And_B_PlayRound
 	playerA := NewPlayer("A", ticketWithNumberA)
 	playerB := NewPlayer("B", ticketWithNumberB)
 	numberBox := NewNumberBox(75)
-	allPlayer := [2]Player{playerA, playerB}
+	allPlayer := []Player{playerA, playerB}
 	game := NewGame(allPlayer, numberBox)
 
 	bingoPlayer := ""
 	for bingoPlayer == "" {
 
 		pickupNumber := game.PickUpNumber()
-		positionXPlayer1, positionYPlayer1 := game.Player[0].CheckNumber()
+		positionXPlayer1, positionYPlayer1 := game.Players[0].CheckNumber(pickupNumber)
 
-		if positionXPlayer1 != -1 && positionXPlayer1 != -1 {
-			game.Player[0].Mark()
+		if positionXPlayer1 != -1 && positionYPlayer1 != -1 {
+			game.Players[0].Mark(positionXPlayer1, positionYPlayer1)
+			if game.Players[0].GetBingo(positionXPlayer1, positionYPlayer1) {
+				bingoPlayer = game.Players[0].Name
+				break
+			}
 		}
 
-		positionXPlayer2, positionYPlayer2 := game.Player[1].CheckNumber()
+		positionXPlayer2, positionYPlayer2 := game.Players[1].CheckNumber(pickupNumber)
 
 		if positionXPlayer2 != -1 && positionYPlayer2 != -1 {
-			game.Player[1].Mark()
-		}
+			game.Players[1].Mark(positionXPlayer2, positionYPlayer2)
 
-		if game.Player[0].GetBingo() {
-			bingoPlayer = game.Player[0].GetName()
-			break
+			if game.Players[1].GetBingo(positionXPlayer2, positionYPlayer2) {
+				bingoPlayer = game.Players[1].Name
+				break
+			}
 		}
-		if game.Player[1].GetBingo() {
-			bingoPlayer = game.Player[1].GetName()
-			break
-		}
-
 	}
 
 	expectedBingoPlayer := "B"
