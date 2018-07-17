@@ -17,3 +17,19 @@ func (p Player) CheckNumber(number int) (int, int) {
 	}
 	return -1, -1
 }
+
+func (p Player) CheckVertical(positionX, positionY int) bool {
+	var number int
+	for rowIndex := range p.Ticket.Grid[positionX] {
+
+		if p.Ticket.Grid[positionX][rowIndex].Status == true {
+			number++
+			if number == p.Ticket.SizeX {
+				return true
+			}
+		}
+
+	}
+
+	return false
+}
