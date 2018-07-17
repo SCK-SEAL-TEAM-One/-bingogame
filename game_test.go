@@ -24,3 +24,15 @@ func Test_NewNumberBox_Input_75_Should_Be_Number_1_To_75(t *testing.T) {
 		unique[value] = true
 	}
 }
+
+func Test_PickUpNumber_Should_Be_Number_In_NumberBox(t *testing.T) {
+
+	numberbox := []int{9, 51, 47, 29, 56, 49, 39, 58}
+	game := Game{NumberBox: numberbox}
+	for index := 0; index < len(numberbox); index++ {
+		pickUpNumber := game.PickUpNumber()
+		if numberbox[index] != pickUpNumber {
+			t.Errorf("expected is %v but got %v", numberbox[index], pickUpNumber)
+		}
+	}
+}
