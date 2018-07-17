@@ -27,3 +27,36 @@ func Test_NewTicket_Input_Number_Of_Grid_5_Should_Be_Ticket_With_SizeX_And_SizeY
 		t.Errorf("expect %v but got %v", expected, actualTicket)
 	}
 }
+
+func MockTicketNumber(ticket Ticket, mockId int) {
+	switch mockId {
+	case 1:
+		ticketDataId := []int{
+			3, 21, 39, 53, 55,
+			12, 29, 32, 54, 67,
+			11, 30, 0, 49, 70,
+			9, 16, 41, 45, 68,
+			7, 19, 44, 52, 72}
+		ticketDataIdIndex := 0
+		for indexRow := 0; indexRow < 5; indexRow++ {
+			for indexColumn := 0; indexColumn < 5; indexColumn++ {
+				ticket.Grid[indexRow][indexColumn].Number = ticketDataId[ticketDataIdIndex]
+				ticketDataIdIndex++
+			}
+		}
+	case 2:
+		ticketDataId := []int{
+			1, 17, 35, 51, 74,
+			9, 21, 41, 58, 79,
+			2, 23, 0, 47, 68,
+			14, 29, 32, 49, 66,
+			11, 30, 39, 56, 70}
+		ticketDataIdIndex := 0
+		for indexRow := 0; indexRow < 5; indexRow++ {
+			for indexColumn := 0; indexColumn < 5; indexColumn++ {
+				ticket.Grid[indexRow][indexColumn].Number = ticketDataId[ticketDataIdIndex]
+				ticketDataIdIndex++
+			}
+		}
+	}
+}
