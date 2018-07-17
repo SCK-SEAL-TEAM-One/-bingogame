@@ -32,13 +32,13 @@ func Test_NewGame(t *testing.T) {
 	newPlayerB := NewPlayer("B", newTicketB)
 	allPlayer := []Player{newPlayerA, newPlayerB}
 	newNumberBox := NewNumberBox(75)
-	expected := Game{Player: allPlayer, NumberBox: newNumberBox}
+	expected := Game{Players: allPlayer, NumberBox: newNumberBox}
 
 	actualNewGame := NewGame(allPlayer, newNumberBox)
 
-	for indexPlayer := 0; indexPlayer < len(actualNewGame.Player); indexPlayer++ {
-		if expected.Player[indexPlayer].Name != actualNewGame.Player[indexPlayer].Name {
-			t.Errorf("Should be %v but got %v", expected.Player[indexPlayer].Name, actualNewGame.Player[indexPlayer].Name)
+	for indexPlayer := 0; indexPlayer < len(actualNewGame.Players); indexPlayer++ {
+		if expected.Players[indexPlayer].Name != actualNewGame.Players[indexPlayer].Name {
+			t.Errorf("Should be %v but got %v", expected.Players[indexPlayer].Name, actualNewGame.Players[indexPlayer].Name)
 		}
 	}
 	if len(expected.NumberBox) != len(actualNewGame.NumberBox) {

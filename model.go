@@ -17,6 +17,6 @@ type Player struct {
 }
 
 type Game struct {
-	Player    []Player
+	Players   []Player
 	NumberBox []int
 }
