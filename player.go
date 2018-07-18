@@ -50,6 +50,22 @@ func (p Player) CheckVertical(positionX, positionY int) bool {
 	return false
 }
 
+func (p Player) CheckHorizental(positionX, positionY int) bool {
+	var number int
+	positionX -= 1
+	for columnIndex := 0; columnIndex < p.Ticket.SizeY; columnIndex++ {
+		fmt.Println(p.Ticket.Grid[positionX][columnIndex].Status)
+		if p.Ticket.Grid[positionX][columnIndex].Status == true {
+			number++
+			fmt.Println(number)
+			if number == p.Ticket.SizeY {
+				return true
+			}
+		}
+	}
+	return false
+}
+
 func (p Player) CheckDiagonal(positionX, positionY int) bool {
 	isDiagonalLeftToRight := true
 	isDiagonalRightToLeft := true
@@ -68,20 +84,4 @@ func (p Player) CheckDiagonal(positionX, positionY int) bool {
 	}
 
 	return isDiagonalLeftToRight || isDiagonalRightToLeft
-}
-
-func (p Player) CheckHorizental(positionX, positionY int) bool {
-	var number int
-	positionX -= 1
-	positionY -= 1
-	for columnIndex := range p.Ticket.Grid[positionY] {
-		fmt.Println(columnIndex)
-		if p.Ticket.Grid[positionX][columnIndex].Status == true {
-			number++
-			if number == p.Ticket.SizeY {
-				return true
-			}
-		}
-	}
-	return false
 }
