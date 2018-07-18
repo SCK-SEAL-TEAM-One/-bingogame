@@ -75,6 +75,34 @@ func MockTicketNumber(ticket Ticket, mockId int) Ticket {
 				ticketDataIdIndex++
 			}
 		}
+	case 3:
+		ticketDataId := []int{
+			1, 16, 32, 46, 62,
+			8, 21, 49, 55, 70,
+			11, 26, 0, 51, 66,
+			13, 20, 41, 49, 72,
+			9, 23, 36, 59, 61}
+		ticketDataIdIndex := 0
+		for indexRow := 0; indexRow < 5; indexRow++ {
+			for indexColumn := 0; indexColumn < 5; indexColumn++ {
+				ticket.Grid[indexRow][indexColumn].Number = ticketDataId[ticketDataIdIndex]
+				ticketDataIdIndex++
+			}
+		}
+	case 4:
+		ticketDataId := []int{
+			2, 17, 31, 49, 71,
+			6, 20, 44, 56, 62,
+			7, 18, 0, 50, 69,
+			10, 28, 40, 47, 73,
+			14, 23, 35, 52, 65}
+		ticketDataIdIndex := 0
+		for indexRow := 0; indexRow < 5; indexRow++ {
+			for indexColumn := 0; indexColumn < 5; indexColumn++ {
+				ticket.Grid[indexRow][indexColumn].Number = ticketDataId[ticketDataIdIndex]
+				ticketDataIdIndex++
+			}
+		}
 	}
 	return ticket
 }
