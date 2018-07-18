@@ -54,7 +54,23 @@ func (p Player) CheckVertical(positionX, positionY int) bool {
 }
 
 func (p Player) CheckDiagonal(positionX, positionY int) bool {
-	return false
+	isDiagonalLeftToRight := true
+	isDiagonalRightToLeft := true
+	for indexRowColumn := 0; indexRowColumn < 5; indexRowColumn++ {
+		if !p.Ticket.GetGridStatus(indexRowColumn, indexRowColumn) {
+			isDiagonalLeftToRight = false
+			break
+		}
+	}
+
+	for indexRow, indexColumn := 4, 0; indexRow >= 0; indexRow, indexColumn = indexRow-1, indexColumn+1 {
+		if !p.Ticket.GetGridStatus(indexRow, indexColumn) {
+			isDiagonalRightToLeft = false
+			break
+		}
+	}
+
+	return isDiagonalLeftToRight || isDiagonalRightToLeft
 }
 
 func (p Player) CheckHorizontal(positionX, positionY int) bool {
