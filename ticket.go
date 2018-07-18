@@ -29,3 +29,7 @@ func GenerateTicketNumber(ticket Ticket) Ticket {
 func (t Ticket) GetGridNumber(Row, Column int) int {
 	return t.Grid[Row][Column].Number
 }
+
+func (t Ticket) GetGridStatus(Row, Column int) bool {
+	return t.Grid[Row][Column].Status
+}
