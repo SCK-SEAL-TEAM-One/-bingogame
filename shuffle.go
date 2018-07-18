@@ -12,7 +12,8 @@ func Shuffle(startNumber, endNumber int) []int {
 		shuffle[index] = index + 1
 	}
 	for index := len(shuffle) - 1; index > 0; index-- {
-		rand.Seed(time.Now().UTC().UnixNano())
+		secondsSince1970 := time.Now().UTC().UnixNano()
+		rand.Seed(secondsSince1970)
 		randomIndex := rand.Intn(index + 1)
 		shuffle[index], shuffle[randomIndex] = shuffle[randomIndex], shuffle[index]
 	}
