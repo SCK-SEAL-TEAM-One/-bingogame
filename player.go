@@ -1,5 +1,9 @@
 package bingogame
 
+import (
+	"fmt"
+)
+
 func NewPlayer(name string, ticket Ticket) Player {
 	return Player{
 		Name:   name,
@@ -30,13 +34,16 @@ func (p Player) CheckNumber(number int) (int, int) {
 }
 
 func (p Player) GetBingo(positionX, positionY int) bool {
+	fmt.Println(positionX, positionY)
 	return p.CheckHorizontal(positionX, positionY) || p.CheckDiagonal(positionX, positionY) || p.CheckVertical(positionX, positionY)
 }
 
 func (p Player) CheckVertical(positionX, positionY int) bool {
+	positionX--
+	positionY--
 	var number int
-	for rowIndex := range p.Ticket.Grid[positionX] {
-		if p.Ticket.Grid[positionX][rowIndex].Status == true {
+	for rowIndex := range p.Ticket.Grid {
+		if p.Ticket.Grid[rowIndex][positionY].Status == true {
 			number++
 			if number == p.Ticket.SizeX {
 				return true
