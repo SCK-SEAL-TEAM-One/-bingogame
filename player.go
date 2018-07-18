@@ -14,7 +14,7 @@ func NewPlayer(name string, ticket Ticket) Player {
 func (p *Player) Mark(positionX, positionY int) bool {
 	positionX -= 1
 	positionY -= 1
-	p.Ticket.Grid[positionX][positionY].Status = true
+	p.Ticket.SetGridStatus(positionX, positionY, true)
 
 	if p.Ticket.Grid[positionX][positionY].Status == false {
 		return false
