@@ -5,6 +5,8 @@ func NewTicket(numberOfGrid int) Ticket {
 	for index := 0; index < numberOfGrid; index++ {
 		grid[index] = make([]State, numberOfGrid)
 	}
+	centerPosition := numberOfGrid / 2
+	grid[centerPosition][centerPosition].Status = true
 	return Ticket{
 		SizeX: numberOfGrid,
 		SizeY: numberOfGrid,

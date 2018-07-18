@@ -11,6 +11,8 @@ func Test_NewTicket_Input_Number_Of_Grid_5_Should_Be_Ticket_With_SizeX_And_SizeY
 	for index := 0; index < numberOfGrid; index++ {
 		grid[index] = make([]State, numberOfGrid)
 	}
+	centerPosition := (numberOfGrid) / 2
+	grid[centerPosition][centerPosition].Status = true
 	expected := Ticket{SizeX: 5, SizeY: 5, Grid: grid}
 
 	actualTicket := NewTicket(numberOfGrid)
@@ -28,16 +30,19 @@ func Test_NewTicket_Input_Number_Of_Grid_5_Should_Be_Ticket_With_SizeX_And_SizeY
 }
 
 func Test_GenerateTicketNumber_Input_BlankTicket_Should_Be_TicketWithNumber(t *testing.T) {
-	grid := make([][]State, 5)
-	for index := 0; index < 5; index++ {
-		grid[index] = make([]State, 5)
+	numberOfGrid := 5
+	grid := make([][]State, numberOfGrid)
+	for index := 0; index < numberOfGrid; index++ {
+		grid[index] = make([]State, numberOfGrid)
 	}
-	ticket := Ticket{SizeX: 5, SizeY: 5, Grid: grid}
+	centerPosition := (numberOfGrid) / 2
+	grid[centerPosition][centerPosition].Status = true
+	ticket := Ticket{SizeX: numberOfGrid, SizeY: numberOfGrid, Grid: grid}
 
 	ticket = GenerateTicketNumber(ticket)
 
-	for indexRow := 0; indexRow < 5; indexRow++ {
-		for indexColumn := 0; indexColumn < 5; indexColumn++ {
+	for indexRow := 0; indexRow < numberOfGrid; indexRow++ {
+		for indexColumn := 0; indexColumn < numberOfGrid; indexColumn++ {
 			if ticket.Grid[indexRow][indexColumn].Number == 0 && indexColumn != 2 && indexRow != 2 {
 				t.Errorf("GirdNumber Row %d Column %d is %d", indexRow, indexColumn, ticket.Grid[indexRow][indexColumn].Number)
 			}
@@ -78,7 +83,7 @@ func MockTicketNumber(ticket Ticket, mockId int) Ticket {
 	case 3:
 		ticketDataId := []int{
 			1, 16, 32, 46, 62,
-			8, 21, 49, 55, 70,
+			8, 21, 45, 55, 70,
 			11, 26, 0, 51, 66,
 			13, 20, 41, 49, 72,
 			9, 23, 36, 59, 61}
