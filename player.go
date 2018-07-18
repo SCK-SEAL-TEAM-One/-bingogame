@@ -38,9 +38,11 @@ func (p Player) GetBingo(positionX, positionY int) bool {
 }
 
 func (p Player) CheckVertical(positionX, positionY int) bool {
+	positionX--
+	positionY--
 	var number int
-	for rowIndex := range p.Ticket.Grid[positionX] {
-		if p.Ticket.Grid[positionX][rowIndex].Status == true {
+	for rowIndex := range p.Ticket.Grid {
+		if p.Ticket.Grid[rowIndex][positionY].Status == true {
 			number++
 			if number == p.Ticket.SizeX {
 				return true
